@@ -67,4 +67,17 @@ function game () {
       console.log("It's a tie!. " + playerMove + " ties with " + computerMove + ". Score is "  + playerWinCount + "-" + computerWinCount);
     }
   }
+  showResult(playerWinCount, computerWinCount);
+}
+
+function showResult(playerWinCount, computerWinCount) {
+  if(playerWinCount > computerWinCount) {
+    console.log("You won the game!");
+  }
+  else if (playerWinCount < computerWinCount) {
+    console.log("Game over!");
+  }
+  else {
+    console.log("Draw!");
+  }
 }
