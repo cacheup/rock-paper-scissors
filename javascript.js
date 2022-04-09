@@ -81,3 +81,13 @@ function showResult(playerWinCount, computerWinCount) {
     console.log("Draw!");
   }
 }
+
+function isValidMove(playerMove) {
+  let move = playerMove.toLowerCase();
+  if(move == "rock" || move == "paper" || move == "scissors") {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
