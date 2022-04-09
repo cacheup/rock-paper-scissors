@@ -12,6 +12,7 @@ function computerPlay() {
   }
 }
 //gets result of a round; "win", "tie", or "lose"
+//arguments are "rock", "paper", or "scissors"
 function playRound(playerSelection, computerSelection) {
   if(playerSelection == "rock") {
     if(computerSelection == "rock") {
@@ -53,8 +54,11 @@ function game () {
   let computerWinCount = 0;
   for(let i = 0; i < 5; i++) {
     let playerMove = prompt("Enter move: ", " ");
+    while(!isValidMove(playerMove)) {
+      playerMove = prompt("Enter valid move: ", " ");
+    }
     let computerMove = computerPlay();
-    let result = playRound(playerMove, computerMove);
+    let result = playRound(playerMove.toLowerCase(), computerMove);
     if(result == "win") {
       playerWinCount++;
       console.log("You win! " + playerMove + " beats " + computerMove + ". Score is " + playerWinCount + "-" + computerWinCount);
