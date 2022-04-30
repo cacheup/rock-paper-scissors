@@ -11,9 +11,8 @@ function computerPlay() {
     return "scissors";
   }
 }
-//gets result of a round; "win", "tie", or "lose"
-//arguments are "rock", "paper", or "scissors"
-function playRound(playerSelection, computerSelection) {
+
+function getRoundResult(playerSelection, computerSelection) {
   if(playerSelection == "rock") {
     if(computerSelection == "rock") {
       return "tie";
