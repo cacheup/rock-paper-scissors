@@ -71,20 +71,38 @@ function isValidMove(playerMove) {
 }
 
 function playRound(e) {
+  const div = document.querySelector('div');
+  if(playerWinCount == 5 || computerWinCount == 5) {
+    playerWinCount = 0;
+    computerWinCount = 0;
+    div.innerText = " ";
+  }
   const playerSelection = e.target.getAttribute('class');
   const computerSelection = computerPlay();
   const roundResult = getRoundResult(playerSelection, computerSelection);
-  const div = document.querySelector('div');
   if(roundResult == 'win') {
-    div.innerText += "You " + roundResult + "! " + playerSelection + " beats " + computerSelection + ".\n";
+    playerWinCount++;
+    div.innerText += "You " + roundResult + "! " + playerSelection + " beats " + computerSelection
+    + ". You: " + playerWinCount + " Computer: " + computerWinCount + "\n";
+    if(playerWinCount == 5) {
+      div.innerText += "You won the game!";
+    }
   }
   else if(roundResult == 'lose') {
-    div.innerText += "You " + roundResult + "! " + computerSelection + " beats " + playerSelection + ".\n";
+    computerWinCount++;
+    div.innerText += "You " + roundResult + "! " + computerSelection + " beats " + playerSelection
+     + ". You: " + playerWinCount + " Computer: " + computerWinCount + "\n";
+     if(computerWinCount == 5) {
+       div.innerText += "You lost, game over!";
+     }
   }
   else {
-    div.innerText += "You " + roundResult + "! " + playerSelection + " ties with " + computerSelection + ".\n";
+    div.innerText += "You " + roundResult + "! " + playerSelection + " ties with " + computerSelection 
+    + ". You: " + playerWinCount + " Computer: " + computerWinCount + "\n";
   }
 }
 
+let playerWinCount = 0;
+let computerWinCount = 0;
 const buttons = document.querySelectorAll('button');
 buttons.forEach(button => button.addEventListener('click', playRound))
