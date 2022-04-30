@@ -69,3 +69,21 @@ function isValidMove(playerMove) {
     return false;
   }
 }
+
+function playRound(e) {
+  const playerSelection = e.target.getAttribute('class');
+  const computerSelection = computerPlay();
+  const roundResult = getRoundResult(playerSelection, computerSelection);
+  if(roundResult == 'win') {
+    console.log("You " + roundResult + "! " + playerSelection + " beats " + computerSelection + ".");
+  }
+  else if(roundResult == 'lose') {
+    console.log("You " + roundResult + "! " + computerSelection + " beats " + playerSelection + ".");
+  }
+  else {
+    console.log("You " + roundResult + "! " + playerSelection + " ties with " + computerSelection + ".");
+  }
+}
+
+const buttons = document.querySelectorAll('button');
+buttons.forEach(button => button.addEventListener('click', playRound))
