@@ -48,31 +48,6 @@ function playRound(playerSelection, computerSelection) {
     }
   }
 }
-//plays 5 rounds
-function game () {
-  let playerWinCount = 0;
-  let computerWinCount = 0;
-  for(let i = 0; i < 5; i++) {
-    let playerMove = prompt("Enter move: ", " ");
-    while(!isValidMove(playerMove)) {
-      playerMove = prompt("Enter valid move: ", " ");
-    }
-    let computerMove = computerPlay();
-    let result = playRound(playerMove.toLowerCase(), computerMove);
-    if(result == "win") {
-      playerWinCount++;
-      console.log("You win! " + playerMove + " beats " + computerMove + ". Score is " + playerWinCount + "-" + computerWinCount);
-    }
-    else if(result == "lose") {
-      computerWinCount++;
-      console.log("You lose! " + computerMove + " beats " + playerMove + ". Score is " + playerWinCount + "-" + computerWinCount);
-    }
-    else {
-      console.log("It's a tie!. " + playerMove + " ties with " + computerMove + ". Score is "  + playerWinCount + "-" + computerWinCount);
-    }
-  }
-  showResult(playerWinCount, computerWinCount);
-}
 
 function showResult(playerWinCount, computerWinCount) {
   if(playerWinCount > computerWinCount) {
