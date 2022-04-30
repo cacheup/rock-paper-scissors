@@ -74,14 +74,15 @@ function playRound(e) {
   const playerSelection = e.target.getAttribute('class');
   const computerSelection = computerPlay();
   const roundResult = getRoundResult(playerSelection, computerSelection);
+  const div = document.querySelector('div');
   if(roundResult == 'win') {
-    console.log("You " + roundResult + "! " + playerSelection + " beats " + computerSelection + ".");
+    div.innerText += "You " + roundResult + "! " + playerSelection + " beats " + computerSelection + ".\n";
   }
   else if(roundResult == 'lose') {
-    console.log("You " + roundResult + "! " + computerSelection + " beats " + playerSelection + ".");
+    div.innerText += "You " + roundResult + "! " + computerSelection + " beats " + playerSelection + ".\n";
   }
   else {
-    console.log("You " + roundResult + "! " + playerSelection + " ties with " + computerSelection + ".");
+    div.innerText += "You " + roundResult + "! " + playerSelection + " ties with " + computerSelection + ".\n";
   }
 }
 
