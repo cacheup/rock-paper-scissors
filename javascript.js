@@ -71,28 +71,6 @@ function displayResult(roundResult, div, playerSelection, computerSelection) {
   }
 }
 
-function showResult(playerWinCount, computerWinCount) {
-  if(playerWinCount > computerWinCount) {
-    console.log("You won the game!");
-  }
-  else if (playerWinCount < computerWinCount) {
-    console.log("Game over!");
-  }
-  else {
-    console.log("Draw!");
-  }
-}
-
-function isValidMove(playerMove) {
-  let move = playerMove.toLowerCase();
-  if(move == "rock" || move == "paper" || move == "scissors") {
-    return true;
-  }
-  else {
-    return false;
-  }
-}
-
 function playRound(e) {
   const div = document.querySelector('div');
   if(playerWinCount == 5 || computerWinCount == 5) {
