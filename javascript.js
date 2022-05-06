@@ -48,6 +48,29 @@ function getRoundResult(playerSelection, computerSelection) {
   }
 }
 
+function displayResult(roundResult, div, playerSelection, computerSelection) {
+  if(roundResult == 'win') {
+    playerWinCount++;
+    div.innerText += "You " + roundResult + "! " + playerSelection + " beats " + computerSelection
+    + ". You: " + playerWinCount + " Computer: " + computerWinCount + "\n";
+    if(playerWinCount == 5) {
+      div.innerText += "You won the game!";
+    }
+  }
+  else if(roundResult == 'lose') {
+    computerWinCount++;
+    div.innerText += "You " + roundResult + "! " + computerSelection + " beats " + playerSelection
+     + ". You: " + playerWinCount + " Computer: " + computerWinCount + "\n";
+     if(computerWinCount == 5) {
+       div.innerText += "Computer won, game over!";
+     }
+  }
+  else {
+    div.innerText += "You " + roundResult + "! " + playerSelection + " ties with " + computerSelection 
+    + ". You: " + playerWinCount + " Computer: " + computerWinCount + "\n";
+  }
+}
+
 function showResult(playerWinCount, computerWinCount) {
   if(playerWinCount > computerWinCount) {
     console.log("You won the game!");
@@ -80,26 +103,7 @@ function playRound(e) {
   const playerSelection = e.target.getAttribute('class');
   const computerSelection = computerPlay();
   const roundResult = getRoundResult(playerSelection, computerSelection);
-  if(roundResult == 'win') {
-    playerWinCount++;
-    div.innerText += "You " + roundResult + "! " + playerSelection + " beats " + computerSelection
-    + ". You: " + playerWinCount + " Computer: " + computerWinCount + "\n";
-    if(playerWinCount == 5) {
-      div.innerText += "You won the game!";
-    }
-  }
-  else if(roundResult == 'lose') {
-    computerWinCount++;
-    div.innerText += "You " + roundResult + "! " + computerSelection + " beats " + playerSelection
-     + ". You: " + playerWinCount + " Computer: " + computerWinCount + "\n";
-     if(computerWinCount == 5) {
-       div.innerText += "You lost, game over!";
-     }
-  }
-  else {
-    div.innerText += "You " + roundResult + "! " + playerSelection + " ties with " + computerSelection 
-    + ". You: " + playerWinCount + " Computer: " + computerWinCount + "\n";
-  }
+  displayResult(roundResult, div, playerSelection, computerSelection);
 }
 
 let playerWinCount = 0;
